@@ -30,4 +30,9 @@ class Role extends Model
     // {
     //     return $this->belongsToMany(User::class);
     // }
+    // Relasi dengan tabel users
+    public function users()
+    {
+        return $this->hasMany(User::class, 'roles_id');
+    }
 }

@@ -51,6 +51,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'roles_id' => 'required|exists:roles,id', // Validasi roles_id
         ]);
 
         if ($validator->fails()) {
@@ -61,6 +62,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'roles_id' => $request->roles_id, // Simpan roles_id
         ]);
 
         $token = $user->createToken('authToken')->plainTextToken;
@@ -97,6 +99,7 @@ class UserController extends Controller
             'name' => 'sometimes|required|string|max:255',
             'email' => 'sometimes|required|string|email|max:255|unique:users,email,'.$id,
             'password' => 'nullable|string|min:8|confirmed',
+            'roles_id' => 'sometimes|required|exists:roles,id', // Validasi roles_id
         ]);
     
         if ($validator->fails()) {
@@ -111,6 +114,7 @@ class UserController extends Controller
     
         $user->name = $request->get('name', $user->name);
         $user->email = $request->get('email', $user->email);
+        $user->roles_id = $request->get('roles_id', $user->roles_id); // Update roles_id jika disediakan
     
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
