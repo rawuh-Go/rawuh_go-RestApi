@@ -20,8 +20,13 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'gender',
+        'address',
+        'phone_number',
+        'country',
         'password',
-        'roles_id',
+        'image',
+        'job_position',
     ];
 
     /**
@@ -46,8 +51,8 @@ class User extends Authenticatable
     /**
      * Mendapatkan role yang terkait dengan user.
      */
-    public function role()
-    {
-        return $this->belongsTo(Role::class, 'roles_id');
-    }
+    // public function role()
+    // {
+    //     return $this->belongsTo(Role::class, 'roles_id');
+    // }
 }

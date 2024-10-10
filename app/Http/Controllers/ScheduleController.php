@@ -33,6 +33,7 @@ class ScheduleController extends Controller
             'shift_id' => 'required|integer',
             'office_id' => 'required|integer',
             'is_wfa' => 'required|boolean',
+            'is_banned' => 'required|boolean',
         ]);
 
         // Membuat jadwal baru
@@ -41,6 +42,7 @@ class ScheduleController extends Controller
             'shift_id' => $request->shift_id,
             'office_id' => $request->office_id,
             'is_wfa' => $request->is_wfa,
+            'is_banned' => $request->is_banned,
         ]);
 
         return response()->json([
@@ -82,6 +84,7 @@ class ScheduleController extends Controller
             'shift_id' => 'sometimes|required|integer',
             'office_id' => 'sometimes|required|integer',
             'is_wfa' => 'sometimes|required|boolean',
+            'is_banned' => 'sometimes|required|boolean',
         ]);
 
         // Mencari schedule berdasarkan ID
@@ -92,7 +95,7 @@ class ScheduleController extends Controller
         }
 
         // Update schedule
-        $schedule->update($request->only(['user_id', 'shift_id', 'office_id', 'is_wfa']));
+        $schedule->update($request->only(['user_id', 'shift_id', 'office_id', 'is_wfa', 'is_banned']));
 
         return response()->json([
             'message' => 'Schedule updated successfully!',

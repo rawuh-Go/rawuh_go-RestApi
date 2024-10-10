@@ -20,6 +20,7 @@ class Schedule extends Model
         'created_at',
         'updated_at',
         'is_wfa',
+        'is_banned',
     ];
 
     // Jika ada relasi dengan tabel lain, bisa didefinisikan di sini

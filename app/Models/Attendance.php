@@ -30,9 +30,9 @@ class Attendance extends Model
         'datang_latitude',
         'datang_longitude',
         'waktu_datang',
+        'foto_absen_datang',
         'waktu_pulang',
-        'created_at',
-        'updated_at'
+        'foto_absen_pulang', // Pastikan ini ada
     ];
 
     /**
